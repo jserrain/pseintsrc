@@ -1,3 +1,5 @@
+// 1DAWMP03UF1
+// jserrain@/2311
 // Iniciatlitza taulell amb totes les caselles = 0
 // t: taulell per referència
 Funcion iniMatrix(t Por Referencia)
