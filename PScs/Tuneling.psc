@@ -17,81 +17,102 @@ Funcion mostraSeccionsTunel(s)
 	Escribir s;
 FinFuncion
 
-//sacc: secció on hi ha accident
-//sec: cadena amb secció del tunel
-//r: sortida 0:Pennsula, 1:Eivissa
-Funcion r = consulta(sacc, seccio Por Referencia)
-	// constants
-	NPUNT = ".";
-	TPUNT = "T";
-	AQUI = "Aqui";
-	PEN = "Peninsula";
-	ILL = "Eivissa";
-	
+Funcion dir = buscaPeligru(seccions, punt)	
 	// variables 
-	tPosEsq = 0; 		// distància a T esq en base a sacc
-	tPosDrt = 0;		// distància a T drt ...
+	nSeccions = Longitud(seccions);
 	dSortidaE = 0;		// distància sortida Esq en base a sacc
 	dSortidaD = 0;		// distància sortida Drt ...
-		
-	s = Subcadena(seccio, sacc, 1);
+	dTEsq = 0;
+	dTDrt = 0;
+	sortir = Falso;
 	
-	// Estem en una secció amb telèfon, llavors "AQUI"
-	si s = TPUNT Entonces
-		r = AQUI;
+	s = Subcadena(seccions, punt, punt);
+	
+	// Estem en una secció amb T, llavors "AQUI"
+	si s = "T" Entonces
+		r = "Aqui";
+	SiNo
+		// Distància del punt_accident al T més proper
+		// busquem primer T a l'esq
+		sortir = Falso;
+		i = punt - 1; 
+		dTEsq = -1;
+		Mientras !sortir & i >= 1
+			si Subcadena(seccio,i,i) = "T" Entonces
+				dTEsq = punt - i;
+				sortir = Verdadero;
+			SiNo
+				i = i - 1;
+			FinSi
+		FinMientras
+		
+		// busquem primer T a drt
+		sortir = Falso;
+		j = punt + 1; 
+		dTDrt = -1;
+		Mientras !sortir & j <= nSeccions
+			si Subcadena(seccio,j,j) = "T" Entonces
+				dTDrt =  j - punt;
+				sortir = Verdadero;
+			SiNo
+				j = j + 1;
+			FinSi
+		FinMientras	
+		
+		// Distància del punt_accident a la sortida més propera
+		dSortidaE = punt - 1;
+		dSortidaD = nSeccions - punt;
+		
+		// a) Si dSortida < dTlf llavors Sortida
+		// a.1) Sortida més propera
+		
+		si (dSortidaE < dSortidaD) Entonces
+			r = "Península";
+		SiNo
+			r = "Eivissa";
+		FinSi
+		
+		// Si T's més propers, esq o drt, estan a la mateixa distància, triar el que  
+		//  està més a prop d'una sortida.
+		
+		si dTEsq = dTDrt Entonces
+			si (dSortidaE < dSortidaD) Entonces
+				r = "Península";
+			SiNo
+				r = "Eivissa";
+			FinSi
+		FinSi
 	FinSi
 	
-	l = Longitud(seccio);
-	
-	// busquem primer T a l'esq
-	sortir = Falso;
-	i = sacc - 1;
-	
-	Mientras !sortir | i >= 1
-		si Subcadena(seccio,i,1) = TPUNT Entonces
-			tPosEsq = i;
-			sortir = Verdadero;
-		SiNo
-			i = i - 1;
-		FinSi
-	FinMientras
-	
-	//busquem primer T a la drt
-	sortir = Falso;
-	i = sacc + 1;
-	
-	Mientras !sortir | i <= l
-		si Subcadena(seccio,i,1) = TPUNT Entonces
-			tPosDrt = i;
-			sortir = Verdadero;
-		SiNo
-			i = i + 1;
-		FinSi
-	FinMientras
-	
-	dSortidaE = sacc - 1;		// distància a sortida esq
-	dSortidaD = l - sacc;		// distància sortida drt
-	
-	// Si sacc més a prop d'una sortida que de T :=> direcció sortida.
-	
-	
-	
+	Escribir "resultat buscaPeligru: ", r;
 FinFuncion
 
-
 Algoritmo Tuneling
-	Definir seccio Como Caracter;
-	Definir consultes, saccident Como Entero;
+	Definir seccions Como Caracter;
+	Definir nconsultes, accident, accident2 Como Entero;
 	
-	creaSeccions(seccio);
-	mostraSeccionsTunel(seccio);
-	consultes = 4;
+	// cas 1
+	creaSeccions(seccions);
+	mostraSeccionsTunel(seccions);
 	
-	Dimension saccident[consultes];
-	saccident[1] = 2; saccident[2] = 3; saccident[3] = 4; saccident[4] = 7;
+	nconsultes = 4;
+	Dimension accident[nconsultes];
+	accident[1] = 2; accident[2] = 3; accident[3] = 4; accident[4] = 7;
 	
-	para i = 1 hasta consultes
-		Escribir consulta(saccident[i],seccio);
+	para i = 1 hasta nconsultes
+		Escribir buscaPeligru(seccions, accident[i]);
+	FinPara
+	
+	// cas 2
+	seccions = "...";
+	mostraSeccionsTunel(seccions);
+	
+	nconsultes = 1;
+	Dimension accident2[nconsultes];
+	accident[1] = 2;
+	
+	para i = 1 hasta nconsultes
+		Escribir buscaPeligru(seccions, accident2[i]);
 	FinPara
 	
 FinAlgoritmo
