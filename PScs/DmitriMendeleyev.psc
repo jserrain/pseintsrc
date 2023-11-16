@@ -36,45 +36,58 @@ Funcion ompleVector(v Por Referencia)
 	FinPara
 FinFuncion
 
+// Donada una cadena busca elements taula periodica
+Funcion cercaElement(se)
+	e1 = "HBCNOFPSKVYIWU";
+	e2_1 = "HeLiBeNeNaMgAlSiClArCaScTiCrMnFeCoNiCuZnGaGeAsSeBrKrRbSrZrNbMoTcRuRhPdAgCdInSnSbTeXeCsBaHfTaReOsIrPtAuHgTlPbBiPoAtRn";
+	e2_2 = "FrRaRfDbSgBhHsMtDsRgCnNhFlMcLvTsOgLaCePrNdPmSmEuGdTbDyHoErTmYbLuAcThPaNpPuAmCnBkCfEsFmMdNoLr";
+	
+	e2 = Concatenar(e2_1, e2_2);
+	
+	
+	
+	
+FinFuncion
+
 // valida sii la cadena 'c' està formada per lletres de l'alfabet anglès
 // e: True or False 
-Funcion valida = validaAlfabetAngles(c)
+Funcion valid = validaAlfabetAngles(c)
 	a = "abcdefghijklmnopqrstuvwxyz";
-	valida = Falso;
+	tilt = Falso;
 	
-	i = 1;
-	Mientras !valida & i <= Longitud(c)
-		cc = Subcadena(c,i,i);
-		
-		trobat = Falso;
-		k = 1;
-		Mientras k <= 26 & !trobat
-			si cc = Subcadena(a,k,k) Entonces
-				trobat = Verdadero;
-			SiNo
+	i = 1;		// apuntador a caracter cadena 'c'
+	Mientras !tilt & i <= Longitud(c)
+		cc = minusculas(Subcadena(c,i,i));
+		si cc <> " " Entonces
+			k = 1; // apuntador a la primera lletra cadena 'a'
+			trobat = Falso;
+			Mientras !trobat & k <= 26
+				ck = Subcadena(a,k,k);
+				si cc = ck Entonces
+					trobat = Verdadero;
+				FinSi
 				k = k + 1;
+			FinMientras
+			
+			si k > 26 Entonces
+				tilt = Verdadero;
 			FinSi
-		FinMientras
-		
-		si k = 27 & !trobat Entonces
-			valida = trobat;
-		SiNo
-			i = i + 1;
 		FinSi
-		
+		i = i + 1;
 	FinMientras
 	
-
+	valid = !tilt;
+	
 FinFuncion
 
 Algoritmo DmitriMendeleyev
 	Definir v Como Caracter;
 	Dimension v[118];
 	
-	ompleVector(v);
+	// ompleVector(v);
 	
-	Escribir "valida: Si Programo = ", validaAlfabetAngles("siprogramo");
-	Escribir "valida: uso C", validaAlfabetAngles("usoc");
-	escribir "valida: i no java", validaAlfabetAngles("inojava");
+	Escribir "valida: Si Programo : ", validaAlfabetAngles("Si Programo");
+	Escribir "valida: uso C : ", validaAlfabetAngles("uso C");
+	escribir "valida: i no Java : ", validaAlfabetAngles("i no Java");
 	
 FinAlgoritmo
