@@ -46,7 +46,7 @@ Funcion e = igualsAntAct(ant Por Referencia, act)
 		
 FinFuncion
 
-// Valida si una matriu de joc és valida
+// Valida si una matriu de joc és valida !ATENCIÓ Només fa una part de la matriu!!!
 // fa un recorregut per les diagonals tal que: !!Només fa mitjà triu les simètriques NO
 // no pot contenir dos posicions consecutives amb un 1
 // t: taulell per referència
