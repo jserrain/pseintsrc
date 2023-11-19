@@ -28,69 +28,54 @@ Funcion setVaixell(t Por Referencia,r,c,m,p)
 	FinSi
 FinFuncion
 
-Funcion e = igualsAntAct(ant Por Referencia, act Por Referencia)
+// Funció que compara dos variables tal que:
+// si anterior = 0, actualitza el seu valor amb el contingut de actual
+// si anterior = actual = 1, error = TRUE
+Funcion e = igualsAntAct(ant Por Referencia, act)
 	e = Falso;
 	
-	Si ant = 0 Entonces
+	Si act = 0 Entonces
 		ant = act;
-	SiNo 
-		si ant = 1 & act = 1 Entonces
-			e = Verdadero;
+	SiNo
+		Si ant = 1 Entonces
+			e = verdadero;
+		SiNo
+			ant = act;
 		FinSi
 	FinSi
-	
+		
 FinFuncion
 
 // Valida si una matriu de joc és valida
-// fa un recorregut per les diagonals tal que:
+// fa un recorregut per les diagonals tal que: !!Només fa mitjà triu les simètriques NO
 // no pot contenir dos posicions consecutives amb un 1
 // t: taulell per referència
 // s: True o False
 Funcion s = validaTaulell(t Por Referencia)
-	ant = 0; 		// guardem si vaixell a posició anterior a actual
-	act = 0; 		//
-	i = 1; 			// index a la matriu
-	trobat = Falso;	// Hem trobat un error?
+	trobat = Falso;	// C/F segons contingut posicions [i,j] = 1 = [i+1, j+1]
+	dM = 6;			// dimensió matriu
+	itC = 6;		// iterador columnes
 	
-	// Diagonal principal
-	mientras i <= 6 & !trobat 
-		act = t[i,i];
-		
-		trobat = igualsAntAct(ant, act);
-		
+	i = 1;
+	Mientras  i <= dM & !trobat
+		k = 1;
+		ant = 0; 		// contingut posició anterior 
+		Si i = 1 Entonces
+			Mientras k <= dM & !trobat Hacer
+				trobat = igualsAntAct(ant, t[k,k]);
+				k = k + 1;
+			FinMientras
+		SiNo
+			j = i;
+			Mientras k <= itC & !trobat Hacer
+				trobat = igualsAntAct(ant,t[j,k]);
+				j = j + 1;
+				k = k + 1;
+			FinMientras
+		FinSi
 		i = i + 1;
+		itC = itC - 1;
 	FinMientras
-	
-	// diagonal inferior
-	// imatge i anti imatge
-	antL = 0; antH = 0; // hight
-	actL = 0; actH = 0; // low
-	trobat = Falso;
-	
-	
-	Mientras i <= 6 & !trobat
-		
-	FinMientras
-	
-	
-	
-	para i = 2 hasta 6
-		para j = 1 hasta (6 - 1)
-			actX = t[i,j];
-			trobat = igualsAntAct(antX, ancX);
-			
-			ActY = t[j,i];
-			trobat = igualsAntAct(antY,ActY);
-			
-			j = j + 1;
-		FinPara
-		i = i + 1;
-	FinPara
-	
-	
-	
-	// diagonal superior
-	
 	
 FinFuncion
 
@@ -107,16 +92,26 @@ FinFuncion
 
 Algoritmo RecorregutDiagonalMatriu
 	Definir t Como Entero;
+	Definir b Como Logico;;
 	Dimension t[6,6];
 	
 	iniMatrix(t);
 	setVaixell(t,1,1,3,0);
-	setVaixell(t,3,4,3,0);
-	setVaixell(t,6,4,3,0);
-	setVaixell(t,3,2,3,1);
-	setVaixell(t,1,5,2,0);
-	
 	setVaixell(t,4,3,3,0);
+	// setVaixell(t,5,3,2,1);  // error ..  però en aquest sentit no el trobat
+	
+	setVaixell(t,5,4,2,1);  // error ..  però en aquest sentit no el trobat
 	
 	showMatrix(t);
+	
+	
+	b = validaTaulell(t);
+	
+	Escribir "El taullell conté errors? ", b;
+	
+	//setVaixell(t,3,4,3,0);
+	//setVaixell(t,6,4,3,0);
+	//setVaixell(t,3,2,3,1);
+	//setVaixell(t,1,5,2,0);
+	
 FinAlgoritmo
