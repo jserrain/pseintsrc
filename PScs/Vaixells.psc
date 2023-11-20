@@ -28,17 +28,17 @@ Funcion setVaixell(t Por Referencia,r,c,m,p)
 	FinSi
 FinFuncion
 
-// Busca el nombre de vaixells de longitud l
+// Busca el nombre de vaixells de longitud donada
 // t: taulell de joc 6x6
 // l: longitud de vaixells a cercar
 // n: nombre de vaixells de longitud l
 Funcion n = cercaVaixell(t, l)
 	// cerca vaixells per files/horitzontal
-	n = cercaVaixellH(t,l);
-	n = n + cercaVaixellV(t,l);
+	n = cercaVaixellHoritzontal(t,l);
+	n = n + cercaVaixellVertical(t,l);
 FinFuncion
 
-Funcion n = cercaVaixellV(t,l)
+Funcion n = cercaVaixellVertical(t,l)
 	sortir = Verdadero;
 	n = 0;
 	
@@ -68,7 +68,7 @@ Funcion n = cercaVaixellV(t,l)
 	FinMientras	
 FinFuncion
 
-Funcion n = cercaVaixellH(t,l)
+Funcion n = cercaVaixellHoritzontal(t,l)
 	sortir = Verdadero;
 	n = 0;
 	i = 1;
