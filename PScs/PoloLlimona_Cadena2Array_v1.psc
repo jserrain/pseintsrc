@@ -1,66 +1,46 @@
 Algoritmo PoloLlimona_Cadena2Array_v1
 	Definir inL1, inL2, inL3 Como Caracter;
 	Definir gA, gB Como Entero;
-	Definir vA Como Entero;
-	Dimensión vA[5];
+	Definir vA, vB Como Entero;
 	
 	inL1 = "3 2";
-	inL2 = "1 2 2 5 2 4";
-	inL3 = "2 1 3 3";
 	
-	inicialitzaVector(vA, 5);
+	// de cada grup el primer component: indica el nombre/repeticions, segon component: numero
+	// Atenció: la suma dels primer components ens dona la Dimensi del vector
+	// exemple 10+2+2 = 14
+	
+	inL2 = "10 2 2 5 2 4";
+	inL3 = "4 1 10 3";
 	
 	// Composició de funcions
 	gA = ConvertirANumero(Subcadena(inL1,1,1));
 	gB = ConvertirANumero(Subcadena(inL1,Longitud(inL1), Longitud(inL1)));
 	
 	Escribir "gA: [", gA, "] gB: [", gB, "]";
-		
-	nRep = 0;	// número de repeticions
-	nNum = 0;	// número
-	aux = "";	// variable auxiliar per llegir caràcter cadena
-	sc = "";	// caràcter de la subcadena 
-	iV = 1;  	// apuntador/iterador vector vA
 	
-	Para i = 1 hasta Longitud(inL2)
-		sc = Subcadena(inL2,i,i);
-		
-		si sc = " " Entonces
-			si nRep = 0 Entonces
-				nRep = ConvertirANumero(aux);
-			SiNo
-				nNum = ConvertirANumero(aux);
-				// afegin grup al vector
-				
-				Para k = 1 hasta nRep
-					vA[k] = nNum;
-				FinPara
-				
-				// inicialitzem variables seguent tupla
-				
-				nRep = 0;
-				nNum = 0;
-				gA = gA - 1;
+	Dimension vA[gA,2];
+	Dimension vB[gB,2];
+	
+	cs = "";					// caràcter de la subcadena 
+	i = 1;						// iterador per trobar espais
+	j = 1;						// iterador token
+	
+	Para it = 1 hasta gA 		// iterem n grups
+		op = 1;					// op1 i op2
+		fiGrup = Falso;
+		Repetir
+			cs = Subcadena(inL2,i,i);
+			Si cs = " " Entonces		// liru liruuuuu!!!
+				vA[it,op] = ConvertirANumero(Subcadena(inL2,j,i-1));
+				si op = 1 Entonces
+					op = 2;
+				SiNo
+					fiGrup = Verdadero;
+				FinSi
+				j = i + 1;		// posició
 			FinSi
-		SiNo
-			aux = Concatenar(aux, sc);
-			Escribir "sc: ", sc, " aux:", aux;
-		FinSi
+			i = i + 1;
+		Hasta Que fiGrup;
+		Escribir "Contingut vA[",it,",1]: ", vA[it,1], " vA[",it,",2]:", vA[it,2];
 	FinPara
-	
-	mostrarVector(vA);
 FinAlgoritmo
-
-Funcion mostrarVector(v)
-	Para i = 1 hasta 5
-		Escribir Sin Saltar v[i], ",";
-	FinPara
-FinFuncion
-
-Funcion inicialitzaVector(a Por Referencia, d)
-	Para i = 1 hasta d
-		a[i] = -1;
-	FinPara
-FinFuncion
-
-
