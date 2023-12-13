@@ -1,7 +1,7 @@
 // 1DAWMP03UF1
 // jserrain@/2311
 // Iniciatlitza taulell amb totes les caselles = 0
-// t: taulell per referËncia
+// t: taulell per refer√®ncia
 Funcion iniMatrix(t Por Referencia)
 	para i = 1 hasta 6
 		para j = 1 hasta 6
@@ -11,11 +11,11 @@ Funcion iniMatrix(t Por Referencia)
 FinFuncion
 
 // Posa un vaixell al taulell
-// t: taula per referËncia
+// t: taula per refer√®ncia
 // r: row o fila
 // c: column o columna
 // m: mida del vaixell
-// p: orientaciÛ vaixell, tal que 0 = horitzontal, 1 = vertical
+// p: orientaci√≥ vaixell, tal que 0 = horitzontal, 1 = vertical
 Funcion setVaixell(t Por Referencia,r,c,m,p)
 	si p = 0 Entonces // horitzontal
 		para j = c hasta (c + (m-1))
@@ -28,7 +28,7 @@ Funcion setVaixell(t Por Referencia,r,c,m,p)
 	FinSi
 FinFuncion
 
-// FunciÛ que compara dos variables tal que:
+// Funci√≥ que compara dos variables tal que:
 // si anterior = 0, actualitza el seu valor amb el contingut de actual
 // si anterior = actual = 1, error = TRUE
 Funcion e = igualsAntAct(ant Por Referencia, act)
@@ -46,20 +46,20 @@ Funcion e = igualsAntAct(ant Por Referencia, act)
 		
 FinFuncion
 
-// Valida si una matriu de joc Ès valida !ATENCI” NomÈs fa una part de la matriu!!!
-// fa un recorregut per les diagonals tal que: !!NomÈs fa mitj‡ triu les simËtriques NO
+// Valida si una matriu de joc √©s valida !ATENCI√ì Nom√©s fa una part de la matriu!!!
+// fa un recorregut per les diagonals tal que: !!Nom√©s fa mitj√† triu les sim√®triques NO
 // no pot contenir dos posicions consecutives amb un 1
-// t: taulell per referËncia
+// t: taulell per refer√®ncia
 // s: True o False
 Funcion s = validaTaulell(t Por Referencia)
 	trobat = Falso;	// C/F segons contingut posicions [i,j] = 1 = [i+1, j+1]
-	dM = 6;			// dimensiÛ matriu
+	dM = 6;			// dimensi√≥ matriu
 	itC = 6;		// iterador columnes
 	
 	i = 1;
 	Mientras  i <= dM & !trobat
 		k = 1;
-		ant = 0; 		// contingut posiciÛ anterior 
+		ant = 0; 		// contingut posici√≥ anterior 
 		Si i = 1 Entonces
 			Mientras k <= dM & !trobat Hacer
 				trobat = igualsAntAct(ant, t[k,k]);
@@ -98,16 +98,16 @@ Algoritmo RecorregutDiagonalMatriu
 	iniMatrix(t);
 	setVaixell(t,1,1,3,0);
 	setVaixell(t,4,3,3,0);
-	// setVaixell(t,5,3,2,1);  // error ..  perÚ en aquest sentit no el trobat
+	// setVaixell(t,5,3,2,1);  // error ..  per√≤ en aquest sentit no el trobat
 	
-	setVaixell(t,5,4,2,1);  // error ..  perÚ en aquest sentit no el trobat
+	setVaixell(t,5,4,2,1);  // error ..  per√≤ en aquest sentit no el trobat
 	
 	showMatrix(t);
 	
 	
 	b = validaTaulell(t);
 	
-	Escribir "El taullell contÈ errors? ", b;
+	Escribir "El taullell cont√© errors? ", b;
 	
 	//setVaixell(t,3,4,3,0);
 	//setVaixell(t,6,4,3,0);
