@@ -2,7 +2,7 @@ Algoritmo FreqLletres
 	// definim constant total caracters A..Z
 	MIDA <- 26;
 	
-	// definició de variables
+	// definiciÃ³ de variables
 	Definir comptador Como Entero;
 	Dimension comptador[MIDA];
 	
@@ -14,7 +14,7 @@ Algoritmo FreqLletres
 	ABCD <- "abcdefghijklmnopqrstuvwxyz"; // mida = 26!!
 	i <- 0; j <- 0;
 	
-	// inicialització array comptador 
+	// inicialitzaciÃ³ array comptador 
 	Para i <- 1 hasta MIDA
 		comptador[i] <- 0;
 	FinPara
@@ -41,7 +41,7 @@ Algoritmo FreqLletres
 		FinSi
 	FinPara
 	
-	Escribir "-- Resultat freqüència --";
+	Escribir "-- Resultat freqÃ¼Ã¨ncia --";
 	
 	para i <- 1 hasta MIDA
 		Escribir "[", subcadena(ABCD, i, i), "] = ", comptador[i];
