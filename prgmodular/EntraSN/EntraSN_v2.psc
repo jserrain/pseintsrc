@@ -1,11 +1,11 @@
 Funcion Escriure (numero_de_missatge, valor_sn)
 	Segun numero_de_missatge Hacer
 		1:
-			missatge = "Entra un caràcter (S/N)?";
+			missatge = "Entra un carÃ cter (S/N)?";
 		2:
-			missatge = "Has entrat el caràcter [" + valor_sn + "] però recorda que:";
+			missatge = "Has entrat el carÃ cter [" + valor_sn + "] perÃ² recorda que:";
 		3:
-			missatge = "Només pots escriure S o N, torna-ho a provar";
+			missatge = "NomÃ©s pots escriure S o N, torna-ho a provar";
 		4:
 			missatge = "Felicitats has escrit [" + valor_sn + "]";
 	Fin Segun
