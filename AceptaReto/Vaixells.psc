@@ -1,7 +1,7 @@
 // 1DAWMP03UF1
 // jserrain@/2311
 // Iniciatlitza taulell amb totes les caselles = 0
-// t: taulell per referència
+// t: taulell per referÃ¨ncia
 Funcion iniMatrix(t Por Referencia)
 	para i = 1 hasta 6
 		para j = 1 hasta 6
@@ -11,11 +11,11 @@ Funcion iniMatrix(t Por Referencia)
 FinFuncion
 
 // Posa un vaixell al taulell
-// t: taula per referència
+// t: taula per referÃ¨ncia
 // r: row o fila
 // c: column o columna
 // m: mida del vaixell
-// p: orientació vaixell, tal que 0 = horitzontal, 1 = vertical
+// p: orientaciÃ³ vaixell, tal que 0 = horitzontal, 1 = vertical
 Funcion setVaixell(t Por Referencia,r,c,m,p)
 	si p = 0 Entonces // horitzontal
 		para j = c hasta (c + (m-1))
