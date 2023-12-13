@@ -1,13 +1,13 @@
-// L´entrada estarà composta per diversos casos de prova. 
-// Cada cas de prova tindrà:
-// Línia 1: Descripció del túnel. Un caràcter per cada secció del túnel (secció <= 1*10?), 
-// - 'T' secció amb telèfon 
-// - '.' secció sense 
-// - El primer caràcter de la línia =  secció "del costat de la península".
-// Linia 2: Número n amb la quantitat de consultes que vénen a continuació. 
-// Linia 3 a n: cadascuna amb un sencer amb la secció on es troba l'accidentat 
+// LÂ´entrada estarÃ  composta per diversos casos de prova. 
+// Cada cas de prova tindrÃ :
+// LÃ­nia 1: DescripciÃ³ del tÃºnel. Un carÃ cter per cada secciÃ³ del tÃºnel (secciÃ³ <= 1*10?), 
+// - 'T' secciÃ³ amb telÃ¨fon 
+// - '.' secciÃ³ sense 
+// - El primer carÃ cter de la lÃ­nia =  secciÃ³ "del costat de la penÃ­nsula".
+// Linia 2: NÃºmero n amb la quantitat de consultes que vÃ©nen a continuaciÃ³. 
+// Linia 3 a n: cadascuna amb un sencer amb la secciÃ³ on es troba l'accidentat 
 // - entre 1 i el nombre de seccions total
-// - sent 1 la primera secció a la ruta des de la península cap a les illes).
+// - sent 1 la primera secciÃ³ a la ruta des de la penÃ­nsula cap a les illes).
 
 Funcion creaSeccions(s Por Referencia)
 		s = ".T...T.T.";
@@ -20,19 +20,19 @@ FinFuncion
 Funcion dir = buscaPeligru(seccions, punt)	
 	// variables 
 	nSeccions = Longitud(seccions);
-	dSortidaE = 0;		// distància sortida Esq en base a sacc
-	dSortidaD = 0;		// distància sortida Drt ...
+	dSortidaE = 0;		// distÃ ncia sortida Esq en base a sacc
+	dSortidaD = 0;		// distÃ ncia sortida Drt ...
 	dTEsq = 0;
 	dTDrt = 0;
 	sortir = Falso;
 	
 	s = Subcadena(seccions, punt, punt);
 	
-	// Estem en una secció amb T, llavors "AQUI"
+	// Estem en una secciÃ³ amb T, llavors "AQUI"
 	si s = "T" Entonces
 		r = "Aqui";
 	SiNo
-		// Distància del punt_accident al T més proper
+		// DistÃ ncia del punt_accident al T mÃ©s proper
 		// busquem primer T a l'esq
 		sortir = Falso;
 		i = punt - 1; 
@@ -59,25 +59,25 @@ Funcion dir = buscaPeligru(seccions, punt)
 			FinSi
 		FinMientras	
 		
-		// Distància del punt_accident a la sortida més propera
+		// DistÃ ncia del punt_accident a la sortida mÃ©s propera
 		dSortidaE = punt - 1;
 		dSortidaD = nSeccions - punt;
 		
 		// a) Si dSortida < dTlf llavors Sortida
-		// a.1) Sortida més propera
+		// a.1) Sortida mÃ©s propera
 		
 		si (dSortidaE < dSortidaD) Entonces
-			r = "Península";
+			r = "PenÃ­nsula";
 		SiNo
 			r = "Eivissa";
 		FinSi
 		
-		// Si T's més propers, esq o drt, estan a la mateixa distància, triar el que  
-		//  està més a prop d'una sortida.
+		// Si T's mÃ©s propers, esq o drt, estan a la mateixa distÃ ncia, triar el que  
+		//  estÃ  mÃ©s a prop d'una sortida.
 		
 		si dTEsq = dTDrt Entonces
 			si (dSortidaE < dSortidaD) Entonces
-				r = "Península";
+				r = "PenÃ­nsula";
 			SiNo
 				r = "Eivissa";
 			FinSi
