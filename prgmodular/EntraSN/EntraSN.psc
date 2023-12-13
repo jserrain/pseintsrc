@@ -10,17 +10,17 @@ Algoritmo EntraSN
 	bSN = Falso;
 	
 	Repetir
-		Escriure("Entra un car‡cter (S/N)?");
+		Escriure("Entra un car√†cter (S/N)?");
 		Leer sn;
 		
 		Si sn = "S" | sn = "N" Entonces
 			bSN = Verdadero;
 		SiNo
-			// msg = "Has entrat el car‡cter [" + sn + "] perÚ recorda que:";
-			msg = Concatenar("Has entrat el car‡cter [", sn);
-			msg = Concatenar(msg, "] perÚ recorda que:");
+			// msg = "Has entrat el car√†cter [" + sn + "] per√≤ recorda que:";
+			msg = Concatenar("Has entrat el car√†cter [", sn);
+			msg = Concatenar(msg, "] per√≤ recorda que:");
 			Escriure(msg);
-			Escriure("NomÈs pots escriure S o N, torna-ho a provar");
+			Escriure("Nom√©s pots escriure S o N, torna-ho a provar");
 		FinSi
 	Hasta Que bSN = Verdadero;
 	msg = "Felicitats has escrit [" + sn + "]";
