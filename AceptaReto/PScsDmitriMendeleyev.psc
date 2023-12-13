@@ -1,7 +1,7 @@
-// Entrada: Cada línia conté una cadena (de 1 a 10.000 caràcters) amb lletres de l'alfabet anglès tant majúscules com minúscules. 
+// Entrada: Cada lÃ­nia contÃ© una cadena (de 1 a 10.000 carÃ cters) amb lletres de l'alfabet anglÃ¨s tant majÃºscules com minÃºscules. 
 // Cadenes separades per espais.
 // 
-// SORTIDA: Per cada cas SI la cadena es pot escriure utilitzant els símbols dels 118 elements químics.
+// SORTIDA: Per cada cas SI la cadena es pot escriure utilitzant els sÃ­mbols dels 118 elements quÃ­mics.
 //
 // Exemple: 
 // Si programo
@@ -13,7 +13,7 @@
 // NO
 
 // omple el vector amb els 118 elements de ta taula periodica
-// v: vector per referència
+// v: vector per referÃ¨ncia
 // 
 Funcion ompleVector(v Por Referencia)
 	e1 = "HBCNOFPSKVYIWU";
@@ -49,7 +49,7 @@ Funcion cercaElement(se)
 	
 FinFuncion
 
-// valida sii la cadena 'c' està formada per lletres de l'alfabet anglès
+// valida sii la cadena 'c' estÃ  formada per lletres de l'alfabet anglÃ¨s
 // e: True or False 
 Funcion valid = validaAlfabetAngles(c)
 	a = "abcdefghijklmnopqrstuvwxyz";
